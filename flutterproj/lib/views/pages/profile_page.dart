@@ -8,7 +8,15 @@ class ProfilePage extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(20.0),
       child: Column(
-        children: [],
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: AssetImage('assets/images/Profile.jpg'),
+          )
+        ],
       ),
     );
   }
