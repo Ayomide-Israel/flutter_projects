@@ -178,9 +178,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         minLines: 1,
                         keyboardType: TextInputType.multiline,
                         textCapitalization: TextCapitalization.sentences,
-                        onSubmitted:
-                            (_) =>
-                                _handleSendPressed(), // Optionally send on keyboard submit
+                        onSubmitted: (_) => _handleSendPressed(),
                       ),
                     ),
                     IconButton(
