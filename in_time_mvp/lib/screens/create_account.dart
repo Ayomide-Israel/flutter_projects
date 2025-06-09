@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:in_time_mvp/screens/login_page.dart';
+import 'package:in_time_mvp/screens/verify_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class CreateAccountPage extends StatefulWidget {
+  const CreateAccountPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<CreateAccountPage> createState() => _CreateAccountPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _CreateAccountPageState extends State<CreateAccountPage> {
   bool rememberMe = false;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -164,7 +165,14 @@ class _LoginPageState extends State<LoginPage> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => VerifyPage(),
+                              ),
+                            );
+                          },
                           child: Text(
                             'Sign Up',
                             style: TextStyle(fontSize: 16),
@@ -175,7 +183,9 @@ class _LoginPageState extends State<LoginPage> {
 
                       Row(
                         children: [
-                          Expanded(child: Divider(thickness: 1)),
+                          Expanded(
+                            child: Divider(thickness: 1, color: Colors.black),
+                          ),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: 8),
                             child: Text(
@@ -184,7 +194,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                           Expanded(
-                            child: Divider(thickness: 1, color: Colors.black26),
+                            child: Divider(thickness: 1, color: Colors.black),
                           ),
                         ],
                       ),
@@ -221,7 +231,7 @@ class _LoginPageState extends State<LoginPage> {
                         ],
                       ),
 
-                      Spacer(), // 👈 This now works properly
+                      Spacer(),
 
                       Center(
                         child: Row(
@@ -234,7 +244,14 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                );
+                              },
                               child: Text(
                                 'Login',
                                 style: TextStyle(
