@@ -1,4 +1,5 @@
 import 'package:expense_tracker/diva.dart';
+import 'package:expense_tracker/widgets/chart/chart.dart';
 import 'package:expense_tracker/widgets/expenses_list/expenses_list.dart';
 import 'package:expense_tracker/models/expense.dart';
 import 'package:expense_tracker/widgets/new_expense.dart';
@@ -35,8 +36,12 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
+      constraints: BoxConstraints(
+        maxWidth: MediaQuery.of(context).size.width, // Add this line
+      ),
       builder: (ctx) => NewExpense(_addExpense),
     );
   }
@@ -73,6 +78,7 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
     Widget mainContent = Center(
       child: const Text('No expenses found, start adding some'),
     );
@@ -91,7 +97,21 @@ class _ExpensesState extends State<Expenses> {
           IconButton(onPressed: _openAddExpenseOverlay, icon: Icon(Icons.add)),
         ],
       ),
-      body: Column(children: [Text('The Chart'), Expanded(child: mainContent)]),
+      body:
+          width < 600
+              ? Column(
+                children: [
+                  Chart(expenses: _registeredExpenses),
+                  Expanded(child: mainContent),
+                ],
+              )
+              : Row(
+                children: [
+                  Expanded(child: Chart(expenses: _registeredExpenses)),
+                  Expanded(child: mainContent),
+                ],
+              ),
+
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
