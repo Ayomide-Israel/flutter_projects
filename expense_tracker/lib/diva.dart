@@ -26,7 +26,7 @@ class _ChatScreenState extends State<ChatScreen> {
           "Content-Type": "application/json",
           "Accept": "application/json",
           "Authorization":
-              "Bearer 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",
+              "Bearer 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",
         },
         body: jsonEncode({
           "model": "deepseek/deepseek-r1:free",
