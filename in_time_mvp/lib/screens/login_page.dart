@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:in_time_mvp/screens/create_account.dart';
 
 class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+  const LoginPage({super.key, required this.onSignUpPressed});
+
+  final void Function() onSignUpPressed;
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -195,12 +197,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => CreateAccountPage(),
-                                  ),
-                                );
+                                widget.onSignUpPressed();
                               },
                               child: Text(
                                 'Sign Up',

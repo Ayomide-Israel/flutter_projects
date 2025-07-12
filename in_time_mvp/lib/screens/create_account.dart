@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:in_time_mvp/screens/login_page.dart';
+import 'package:in_time_mvp/screens/get_started.dart';
 import 'package:in_time_mvp/screens/verify_page.dart';
 
 class CreateAccountPage extends StatefulWidget {
-  const CreateAccountPage({super.key});
+  const CreateAccountPage({super.key, required this.onLoginPressed});
+
+  final void Function() onLoginPressed;
 
   @override
   State<CreateAccountPage> createState() => _CreateAccountPageState();
@@ -245,12 +247,7 @@ class _CreateAccountPageState extends State<CreateAccountPage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => LoginPage(),
-                                  ),
-                                );
+                                widget.onLoginPressed();
                               },
                               child: Text(
                                 'Login',
